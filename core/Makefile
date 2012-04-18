@@ -1281,16 +1281,11 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(OTATOOLS)
 	   --override_device=$(override_device) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-.PHONY: otapackage bacon
+.PHONY: otapackage sourcery
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
-bacon: otapackage
-ifneq ($(TARGET_CUSTOM_RELEASETOOL),)
-	@echo "Running custom releasetool..."
-	$(hide) $(TARGET_CUSTOM_RELEASETOOL)
-else
-	@echo "Running releasetool..."
-	$(hide) ./vendor/cm/tools/squisher
-endif
+sourcery: otapackage
+	@echo "Running Releasetools"
+	$(hide) ./vendor/Sourcery/tools/squisher
 
 # -----------------------------------------------------------------
 # The update package
