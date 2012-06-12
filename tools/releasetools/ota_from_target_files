@@ -404,13 +404,41 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.RunBackup("backup")
 
   script.ShowProgress(0.5, 0)
+ script.ShowProgress(0.5, 0)
+  script.Print("")
+  script.Print("***********************************************")
+  script.Print(" *                 ICSourcery                *")
+  script.Print("  *                4.0.4 r2.1               *")
+  script.Print("   *            IceCreamSandwich           *")
+  script.Print("    *             Galaxy Nexus            *")
+  script.Print("   *            By Team Sourcery           *")
+  script.Print("  *                                         *")
+  script.Print(" *                 Eagle1967                 *")
+  script.Print("*                  DeVortex                   *")
+  script.Print(" *              Chizzele, T-DEV              *")
+  script.Print("  *                   with                  *")
+  script.Print("   *                Themers                *")
+  script.Print("    *    Alastrionia & xkape & atreyu381  *")
+  script.Print("   *                                       *")
+  script.Print("  *              The Rehatching             *")
+  script.Print(" *    Introducing DeVorteX as Co-Developer   *")
+  script.Print("*                                             *")
+  script.Print(" *         Rebuilt from the ground up         *")
+  script.Print("  *     More Theming,More Mods, More fun     *")
+  script.Print("   *                                       *")
+  script.Print("    *          ***VERSION 3.0***          *") 
+  script.Print("     *************************************")
+  script.Print("")
+
 
   if OPTIONS.wipe_user_data:
+    script.Print("The Egg appears to be cracking")
     script.FormatPartition("/data")
 
   script.FormatPartition("/system")
   script.Mount("/system")
   #script.UnpackPackageDir("recovery", "/system")
+  script.Print("Its hatching its hatching")
   script.UnpackPackageDir("system", "/system")
 
   (symlinks, retouch_files) = CopySystemFiles(input_zip, output_zip)
@@ -446,6 +474,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.WriteRawImage("/boot", "boot.img")
 
   script.ShowProgress(0.1, 0)
+  script.Print("ICSourcery has been ReHatched- Please install gapps and launch the new ICSourcery Experience.")
   device_specific.FullOTA_InstallEnd()
 
   if OPTIONS.extra_script is not None:
