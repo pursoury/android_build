@@ -404,7 +404,6 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.RunBackup("backup")
 
   script.ShowProgress(0.5, 0)
- script.ShowProgress(0.5, 0)
   script.Print("")
   script.Print("***********************************************")
   script.Print(" *                 ICSourcery                *")
