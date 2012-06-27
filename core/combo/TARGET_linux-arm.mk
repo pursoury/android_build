@@ -77,7 +77,7 @@ TARGET_arm_CFLAGS :=    -O3 \
 # compiled as ARM.
 ifeq ($(ARCH_ARM_HAVE_THUMB_SUPPORT),true)
 TARGET_thumb_CFLAGS :=  -mthumb \
-                        -O3 \
+                        -Os \
                         -fomit-frame-pointer \
                         -fstrict-aliasing
 else
@@ -146,7 +146,7 @@ else
 TARGET_GLOBAL_CFLAGS +=	-mno-thumb-interwork
 endif
 
-TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
+TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden $(call cc-option,-std=gnu++11)
 
 # More flags/options can be added here
 TARGET_RELEASE_CFLAGS += \
