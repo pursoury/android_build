@@ -69,8 +69,11 @@ TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 ifeq ($(USE_LINARO_COMPILER_FLAGS),yes)
     TARGET_arm_CFLAGS :=    -O3 \
                             -fomit-frame-pointer \
-                            -fstrict-aliasing    \
-                            -funswitch-loops
+                            -fstrict-aliasing \
+                            -Wstrict-aliasing=2 \
+                            -Werror=strict-aliasing \
+                            -funswitch-loops \
+                            -fno-tree-vectorize
 else
     TARGET_arm_CFLAGS :=    -O2 \
                             -fomit-frame-pointer \
@@ -85,7 +88,6 @@ endif
 ifeq ($(ARCH_ARM_HAVE_THUMB_SUPPORT),true)
     ifeq ($(USE_LINARO_COMPILER_FLAGS),yes)
         TARGET_thumb_CFLAGS :=  -mthumb \
-                                -O3 \
                                 -fomit-frame-pointer \
                                 -fstrict-aliasing \
                                 -Wstrict-aliasing=2 \
